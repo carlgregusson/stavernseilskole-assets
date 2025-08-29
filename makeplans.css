@@ -1,52 +1,44 @@
 /* ===========================
-   Stavern Seilskole – MakePlans Theme (brandbar)
+   Stavern Seilskole – MakePlans Theme (brand tuned)
    =========================== */
 
-/* 0) (valgfritt) last inn samme fonter som på nettsiden din.
-   Bytt gjerne til de du faktisk bruker (f.eks. Poppins + Inter): */
+/* Fonter som ligner siden din (store runde overskrifter + ren brødtekst) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
 
-/* 1) Brand-variabler – JUSTER DISSE!  --------------------------- */
+/* Brand-variabler – hentet/tilpasset fra skjermbildet ditt */
 :root{
-  /* Tekst og bakgrunn */
-  --bg: #F9FAFB;         /* lys bakgrunn */
-  --text: #0F1115;       /* hovedtekst – nesten sort */
-  --muted: #6B7280;      /* sekundær tekst */
+  --bg: #F7F7F9;            /* lys bakgrunn på siden */
+  --text: #0E0F12;          /* nesten sort tekst */
+  --muted: #6B7280;         /* sekundær tekst */
 
-  /* Primærfarger (match “Kontakt oss”-knappen / aksent) */
-  --brand: #E06AA3;      /* primær aksent (rosa/magenta) */
-  --brand-hover: #C7528C;/* hover for primær */
+  --brand: #E06AA3;         /* PRIMÆR (rosa/magenta – “Se kursdatoer…”-knapp) */
+  --brand-hover: #C7538E;   /* litt mørkere på hover */
 
-  /* Sekundær (dyp blå hvis du vil ha blå lenker/overskrifter) */
-  --brand-alt: #1E40AF;  /* dyp blå */
-  --brand-alt-hover: #16358F;
-
-  /* Linjer/felt */
-  --line: #E5E7EB;
-  --field: #D1D5DB;
+  --outline: #111827;       /* sort/grå for outline-knapper/rammer */
+  --line: #E5E7EB;          /* linjer */
+  --field: #D1D5DB;         /* input-border */
 }
 
-/* 2) Grunnstil --------------------------------------------------- */
+/* Grunnstil */
 html, body{
   background: var(--bg);
   color: var(--text);
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
-
 h1, h2, h3{
   color: var(--text);
   font-family: "Poppins", "Inter", Arial, sans-serif;
   font-weight: 700;
 }
 
-/* Lenker */
+/* Lenker i brandfarge */
 a{ color: var(--brand); font-weight: 600; text-decoration: none; }
 a:hover{ color: var(--brand-hover); text-decoration: underline; }
 
-/* Litt mer luft mellom felter */
+/* Litt mer luft i form */
 form .field, form p{ margin-bottom: .9rem; }
 
-/* Inputs/textarea – mykere og tydelig fokus */
+/* Inputs/textarea – mykt og tydelig fokus */
 input[type="text"], input[type="email"], input[type="tel"], textarea{
   border: 1px solid var(--field);
   border-radius: .6rem;
@@ -57,7 +49,7 @@ input[type="text"], input[type="email"], input[type="tel"], textarea{
 input:focus, textarea:focus{
   outline: none;
   border-color: var(--brand);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 25%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 20%, transparent);
 }
 
 /* Checkbox */
@@ -66,21 +58,17 @@ input[type="checkbox"]{
   transform: translateY(1px);
   margin-right: .45rem;
 }
-label[for*="terms_accepted"], label[for*="opt_in"], label[for*="bruk_gavekort"]{
-  display: inline-block;
-}
+label[for*="terms_accepted"], label[for*="opt_in"], label[for*="bruk_gavekort"]{ display:inline-block; }
 
-/* Tilleggsinfo – labelappendiks (valgfritt) */
-.optional{ font-size: .85em; font-weight: 400; color: var(--muted); }
-label .optional{ margin-left: .25rem; }
+/* “(valgfritt)” i label + hjelpetekst */
+.optional{ font-size:.85em; font-weight:400; color:var(--muted); }
+label .optional{ margin-left:.25rem; }
+.help{ font-size:.9em; color:var(--muted); margin-top:.25rem; }
 
-/* Hjelpetekst under felt */
-.help{ font-size: .9em; color: var(--muted); margin-top: .25rem; }
+/* Tekstområde */
+textarea{ min-height:7.5rem; line-height:1.45; }
 
-/* Tekstområde – bedre lesbarhet */
-textarea{ min-height: 7.5rem; line-height: 1.45; }
-
-/* Knapper – primær i brand-farge, sekundær grå ------------------ */
+/* Knapper – primær = rosa/magenta (match), sekundær = outline som på “Les mer” */
 button,
 input[type="submit"],
 .buttons .next,
@@ -108,49 +96,44 @@ input[type="submit"]:active,
 .buttons .next:active,
 .actions .next:active{ transform: translateY(1px); }
 
+/* Sekundær/avbryt – lys/outline-stil */
 .buttons .cancel, .actions .cancel, .button.secondary{
-  background-color: #ECEFF1 !important;
-  color: var(--text) !important;
+  background-color: #fff !important;
+  color: var(--outline) !important;
+  border: 1px solid var(--outline) !important;
   border-radius: .6rem !important;
   font-weight: 600 !important;
 }
 
-/* Ekstra luft over knappen på mobil */
+/* Litt ekstra luft over knappene på mobil */
 @media (max-width:640px){
   .actions, .buttons{ margin-top: 1rem; }
 }
 
-/* 3) Vilkår-accordion – uten ramme, med pil --------------------- */
-.terms-accordion{ margin-top: .6rem; }
+/* Vilkår-accordion – ren, uten ramme, med pil */
+.terms-accordion{ margin-top:.6rem; }
 .terms-accordion > summary{
-  list-style: none;
-  cursor: pointer;
-  font-weight: 700;
-  padding: .45rem 0;
-  position: relative;
-  padding-left: 1.2rem; /* plass til pil */
+  list-style:none;
+  cursor:pointer;
+  font-weight:700;
+  padding:.45rem 0;
+  position:relative;
+  padding-left:1.2rem; /* plass til pil */
   color: var(--text);
 }
-.terms-accordion > summary::-webkit-details-marker{ display: none; }
-
-/* Pil (lukket = ▼, åpen = ▲) */
+.terms-accordion > summary::-webkit-details-marker{ display:none; }
 .terms-accordion > summary::before{
-  content: "▼";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: .82em;
-  color: var(--muted);
+  content:"▼";
+  position:absolute; left:0; top:50%;
+  transform:translateY(-50%);
+  font-size:.82em; color:var(--muted);
 }
-.terms-accordion[open] > summary::before{ content: "▲"; }
-
-/* Innholdet i accordion */
+.terms-accordion[open] > summary::before{ content:"▲"; }
 .terms-box{
-  margin-top: .3rem;
-  padding: .25rem 0;
-  line-height: 1.55;
-  font-size: .95em;
+  margin-top:.3rem;
+  padding:.25rem 0;
+  line-height:1.55;
+  font-size:.95em;
   color: var(--text);
 }
-.terms-box p{ margin: .5rem 0; }
+.terms-box p{ margin:.5rem 0; }
