@@ -1,65 +1,78 @@
 /* ===========================
-   Stavern Seilskole – MakePlans Theme
+   Stavern Seilskole – MakePlans Theme (brandbar)
    =========================== */
 
-/* --- Fargevariabler (enkelt å tweake senere) --- */
+/* 0) (valgfritt) last inn samme fonter som på nettsiden din.
+   Bytt gjerne til de du faktisk bruker (f.eks. Poppins + Inter): */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* 1) Brand-variabler – JUSTER DISSE!  --------------------------- */
 :root{
-  --brand-blue: #1E40AF;   /* primær blå */
-  --brand-orange: #F97316; /* aksent/hover */
-  --text: #111827;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --field: #d1d5db;
-  --bg: #F9FAFB;
+  /* Tekst og bakgrunn */
+  --bg: #F9FAFB;         /* lys bakgrunn */
+  --text: #0F1115;       /* hovedtekst – nesten sort */
+  --muted: #6B7280;      /* sekundær tekst */
+
+  /* Primærfarger (match “Kontakt oss”-knappen / aksent) */
+  --brand: #E06AA3;      /* primær aksent (rosa/magenta) */
+  --brand-hover: #C7528C;/* hover for primær */
+
+  /* Sekundær (dyp blå hvis du vil ha blå lenker/overskrifter) */
+  --brand-alt: #1E40AF;  /* dyp blå */
+  --brand-alt-hover: #16358F;
+
+  /* Linjer/felt */
+  --line: #E5E7EB;
+  --field: #D1D5DB;
 }
 
-/* --- Grunnstil --- */
+/* 2) Grunnstil --------------------------------------------------- */
 html, body{
   background: var(--bg);
   color: var(--text);
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* Overskrifter */
 h1, h2, h3{
-  color: var(--brand-blue);
-  font-weight: 600;
+  color: var(--text);
+  font-family: "Poppins", "Inter", Arial, sans-serif;
+  font-weight: 700;
 }
 
 /* Lenker */
-a{ color: var(--brand-blue); font-weight: 500; }
-a:hover{ color: var(--brand-orange); }
+a{ color: var(--brand); font-weight: 600; text-decoration: none; }
+a:hover{ color: var(--brand-hover); text-decoration: underline; }
 
 /* Litt mer luft mellom felter */
 form .field, form p{ margin-bottom: .9rem; }
 
-/* Inputs/textarea */
+/* Inputs/textarea – mykere og tydelig fokus */
 input[type="text"], input[type="email"], input[type="tel"], textarea{
   border: 1px solid var(--field);
-  border-radius: .5rem;
-  padding: .5rem;
+  border-radius: .6rem;
+  padding: .6rem .7rem;
   font-size: 1rem;
   background: #fff;
 }
 input:focus, textarea:focus{
   outline: none;
-  border-color: var(--brand-blue);
-  box-shadow: 0 0 0 2px rgba(30,64,175,.18);
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 25%, transparent);
 }
 
-/* Checkbox (støttes i moderne browsere) */
+/* Checkbox */
 input[type="checkbox"]{
-  accent-color: var(--brand-blue);
+  accent-color: var(--brand);
   transform: translateY(1px);
-  margin-right: .4rem;
+  margin-right: .45rem;
 }
 label[for*="terms_accepted"], label[for*="opt_in"], label[for*="bruk_gavekort"]{
   display: inline-block;
 }
 
 /* Tilleggsinfo – labelappendiks (valgfritt) */
-.optional{ font-size: .85em; font-weight: 400; color: #666; }
-label .optional{ color: var(--muted); margin-left: .25rem; }
+.optional{ font-size: .85em; font-weight: 400; color: var(--muted); }
+label .optional{ margin-left: .25rem; }
 
 /* Hjelpetekst under felt */
 .help{ font-size: .9em; color: var(--muted); margin-top: .25rem; }
@@ -67,19 +80,19 @@ label .optional{ color: var(--muted); margin-left: .25rem; }
 /* Tekstområde – bedre lesbarhet */
 textarea{ min-height: 7.5rem; line-height: 1.45; }
 
-/* Knapper (MakePlans bruker ulike klassenavn – ta brett grep) */
+/* Knapper – primær i brand-farge, sekundær grå ------------------ */
 button,
 input[type="submit"],
 .buttons .next,
 .actions .next,
 .button.primary{
-  background-color: var(--brand-blue) !important;
+  background-color: var(--brand) !important;
   color: #fff !important;
   border: none !important;
-  border-radius: .5rem !important;
-  font-weight: 600 !important;
-  padding: .6rem 1.2rem !important;
-  transition: background-color .2s ease !important;
+  border-radius: .6rem !important;
+  font-weight: 700 !important;
+  padding: .7rem 1.1rem !important;
+  transition: background-color .2s ease, transform .02s ease !important;
   text-decoration: none !important;
   display: inline-block;
 }
@@ -88,15 +101,18 @@ input[type="submit"]:hover,
 .buttons .next:hover,
 .actions .next:hover,
 .button.primary:hover{
-  background-color: var(--brand-orange) !important;
+  background-color: var(--brand-hover) !important;
 }
+button:active,
+input[type="submit"]:active,
+.buttons .next:active,
+.actions .next:active{ transform: translateY(1px); }
 
-/* Sekundær/avbryt */
 .buttons .cancel, .actions .cancel, .button.secondary{
-  background-color: #E5E7EB !important;
+  background-color: #ECEFF1 !important;
   color: var(--text) !important;
-  border-radius: .5rem !important;
-  font-weight: 500 !important;
+  border-radius: .6rem !important;
+  font-weight: 600 !important;
 }
 
 /* Ekstra luft over knappen på mobil */
@@ -104,13 +120,13 @@ input[type="submit"]:hover,
   .actions, .buttons{ margin-top: 1rem; }
 }
 
-/* --- Vilkår-accordion – ren, uten ramme, med pil --- */
-.terms-accordion{ margin-top: .5rem; }
+/* 3) Vilkår-accordion – uten ramme, med pil --------------------- */
+.terms-accordion{ margin-top: .6rem; }
 .terms-accordion > summary{
   list-style: none;
   cursor: pointer;
-  font-weight: 600;
-  padding: .4rem 0;
+  font-weight: 700;
+  padding: .45rem 0;
   position: relative;
   padding-left: 1.2rem; /* plass til pil */
   color: var(--text);
@@ -124,9 +140,8 @@ input[type="submit"]:hover,
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  font-size: .8em;
-  color: #444;
-  transition: transform .2s ease;
+  font-size: .82em;
+  color: var(--muted);
 }
 .terms-accordion[open] > summary::before{ content: "▲"; }
 
@@ -136,5 +151,6 @@ input[type="submit"]:hover,
   padding: .25rem 0;
   line-height: 1.55;
   font-size: .95em;
+  color: var(--text);
 }
 .terms-box p{ margin: .5rem 0; }
