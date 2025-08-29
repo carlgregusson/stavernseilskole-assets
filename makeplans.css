@@ -714,3 +714,81 @@ ul#select-service li { display:block !important; }
     text-align:right !important; 
   }
 }
+/* ===== Eventliste: tving anker til block + plass til pris/ledig ===== */
+body.c_events_a_index #events ul#select-event li { 
+  position: relative !important;
+}
+
+/* ankeret = selve rosa “knappen” */
+body.c_events_a_index #events ul#select-event li > a {
+  display: block !important;                  /* overstyr table-cell */
+  background: var(--brand) !important;
+  background-image: none !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: .8rem !important;
+  text-shadow: none !important;
+
+  padding: 1rem 1.25rem !important;
+  padding-right: 13.5rem !important;          /* gjør feltet til høyre “hellig” */
+  white-space: normal !important;             /* la kursnavn bryte linje */
+  box-shadow: 0 2px 6px rgba(0,0,0,.08) !important;
+}
+
+/* pris til høyre, vertikalt sentrert */
+body.c_events_a_index #events ul#select-event li span.price {
+  position: absolute !important;
+  right: 9rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: none !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  line-height: 1 !important;
+  z-index: 2 !important;
+}
+
+/* “X ledige” som liten pill helt til høyre */
+body.c_events_a_index #events ul#select-event li span.free_capacity {
+  position: absolute !important;
+  right: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: #fff !important;
+  background: rgba(255,255,255,.22) !important;
+  border-radius: 9999px !important;
+  padding: .25rem .6rem !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  line-height: 1 !important;
+  z-index: 2 !important;
+}
+
+/* Mobil: legg pris + ledig under knappen, høyrejustert */
+@media (max-width: 640px){
+  body.c_events_a_index #events ul#select-event li > a {
+    padding-right: 1.25rem !important;
+    margin-bottom: .25rem !important;
+  }
+  body.c_events_a_index #events ul#select-event li {
+    text-align: right !important;
+  }
+  body.c_events_a_index #events ul#select-event li span.price,
+  body.c_events_a_index #events ul#select-event li span.free_capacity {
+    position: static !important;
+    transform: none !important;
+    display: inline-block !important;
+    color: #111827 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+  }
+  body.c_events_a_index #events ul#select-event li span.price { 
+    margin-right: .5rem !important;
+  }
+  body.c_events_a_index #events ul#select-event li span.free_capacity {
+    background:#F3E1EA !important;
+    border-radius: .6rem !important;
+    padding: .15rem .45rem !important;
+  }
+}
