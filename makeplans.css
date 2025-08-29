@@ -49,3 +49,51 @@ ul#select-event li, ul#select-service li{
   border: 0 !important;
 }
 ul#se
+
+/* --- TVING ROSA BAKGRUNN PÅ “KNAPPER” (uten å røre layout) --- */
+
+/* Tjeneste-oversikten */
+body .services li a,
+body .service-list li a,
+body .service_types li a{
+  background: var(--brand) !important;
+  background-color: var(--brand) !important;
+  background-image: none !important;
+  color:#fff !important;
+  border-color: transparent !important;
+  text-shadow:none !important;
+}
+body .services li a:hover,
+body .service-list li a:hover,
+body .service_types li a:hover{
+  background: var(--brand-hover) !important;
+}
+
+/* Event-lister (datoer for valgt kurs) */
+body #events ul#select-event li a,
+body ul#select-service li a{
+  background: var(--brand) !important;
+  background-color: var(--brand) !important;
+  background-image: none !important;
+  color:#fff !important;
+  border-color: transparent !important;
+  text-shadow:none !important;
+}
+body #events ul#select-event li a:hover,
+body ul#select-service li a:hover{
+  background: var(--brand-hover) !important;
+}
+
+/* Noen temaer legger farge på et INDRE <span> – nøytraliser det */
+body #events ul#select-event li a > span,
+body ul#select-service li a > span,
+body .services li a > span,
+body .service-list li a > span,
+body .service_types li a > span{
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Pris/“ledige” skal fortsatt være lesbart, men vi rører ikke posisjon */
+#events .price, #events .free_capacity { color:#fff !important; text-shadow:none !important; }
+
