@@ -110,3 +110,42 @@ ul#select-event li>.free_capacity,ul#select-service li>.free_capacity{
     grid-column:3 !important;grid-row:2 !important;justify-self:end !important;color:#111827 !important;background:#F3E1EA !important;border-radius:.6rem !important;padding:.15rem .45rem !important;
   }
 }
+
+/* --- Mobil: sørg for pene side-gutters og ingen overflow --- */
+@media (max-width:640px){
+  /* kortene (LI) – definer bredde, gutter og mer luft inni */
+  .services li,
+  .service-list li,
+  .service_types li,
+  ul#select-event li,
+  ul#select-service li{
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: .75rem 1rem !important;                 /* 1rem side-gutter */
+    padding: 1rem 1rem 1.15rem 1rem !important;     /* litt ekstra bunnpadding */
+  }
+
+  /* selve klikkflaten – aldri stikke utenfor */
+  .services li a,
+  .service-list li a,
+  .service_types li a,
+  ul#select-event li > a,
+  ul#select-service li > a{
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-decoration: none !important;               /* ingen strek under */
+    line-height: 1.25 !important;
+  }
+
+  /* pris + ledige på linjen under – høyrejustert (fra før), men litt luft */
+  ul#select-event li, ul#select-service li{ text-align:right !important; }
+  ul#select-event li > .price, ul#select-service li > .price{ margin-right:.6rem !important; color:#111827 !important; }
+  ul#select-event li > .free_capacity, ul#select-service li > .free_capacity{
+    color:#111827 !important; background:#F3E1EA !important; border-radius:.6rem !important; padding:.18rem .5rem !important;
+  }
+}
+
+/* Sikkerhetsnett: aldri horisontal scroll pga. “uheldige” bredder */
+html, body { overflow-x: hidden; }
