@@ -1,6 +1,5 @@
 /* ===========================
-   Stavern Seilskole – MakePlans Skin (minimal)
-   Overstyrer KUN farger + header. Layout lar vi temaet styre.
+   Stavern Seilskole – MakePlans Skin (minimal, color-only)
    =========================== */
 
 /* Brand */
@@ -24,76 +23,79 @@
   color:var(--brand) !important;
 }
 
-/* ——— Tjeneste-oversikt (liste med kurskategorier) ——— */
-.services li, .service-list li, .service_types li{
-  background: transparent !important;
+/* ===========================
+   Tjeneste-oversikt (liste med kurskategorier)
+   =========================== */
+
+/* Farg hele raden (LI) */
+.services li,
+.service-list li,
+.service_types li{
+  background-color: var(--brand) !important;
   background-image: none !important;
   border: 0 !important;
 }
-.services li a, .service-list li a, .service_types li a{
-  background-color: var(--brand) !important;
-  background-image: none !important;
-  color:#fff !important;
-  text-shadow:none !important;
-  border-color: transparent !important;
-}
-.services li a:hover, .service-list li a:hover, .service_types li a:hover{
+.services li:hover,
+.service-list li:hover,
+.service_types li:hover{
   background-color: var(--brand-hover) !important;
 }
 
-/* ——— Event-lister (datoer for valgt kurs) ——— */
-/* Nøytraliser grønn tekstur – la layout være i fred */
-ul#select-event li, ul#select-service li{
+/* Tittel/lenke: hvit tekst, ingen egen bakgrunn */
+.services li a,
+.service-list li a,
+.service_types li a{
+  background: transparent !important;
+  color:#fff !important;
+  text-shadow:none !important;
+  border-color: transparent !important;
+  text-decoration:none !important;
+}
+
+/* Noen temaer legger farge på indre <span> */
+.services li a > span,
+.service-list li a > span,
+.service_types li a > span{
   background: transparent !important;
   background-image: none !important;
+}
+
+/* ===========================
+   Event-lister (datoer for valgt kurs)
+   =========================== */
+
+/* Farg hele raden (LI) – lar layout være i fred */
+#events ul#select-event li,
+ul#select-service li{
+  background-color: var(--brand) !important;
+  background-image: none !important; /* fjern grønn tekstur */
   border: 0 !important;
 }
-ul#se
 
-/* --- TVING ROSA BAKGRUNN PÅ “KNAPPER” (uten å røre layout) --- */
-
-/* Tjeneste-oversikten */
-body .services li a,
-body .service-list li a,
-body .service_types li a{
-  background: var(--brand) !important;
-  background-color: var(--brand) !important;
-  background-image: none !important;
-  color:#fff !important;
-  border-color: transparent !important;
-  text-shadow:none !important;
-}
-body .services li a:hover,
-body .service-list li a:hover,
-body .service_types li a:hover{
-  background: var(--brand-hover) !important;
-}
-
-/* Event-lister (datoer for valgt kurs) */
-body #events ul#select-event li a,
-body ul#select-service li a{
-  background: var(--brand) !important;
-  background-color: var(--brand) !important;
-  background-image: none !important;
-  color:#fff !important;
-  border-color: transparent !important;
-  text-shadow:none !important;
-}
-body #events ul#select-event li a:hover,
-body ul#select-service li a:hover{
-  background: var(--brand-hover) !important;
-}
-
-/* Noen temaer legger farge på et INDRE <span> – nøytraliser det */
-body #events ul#select-event li a > span,
-body ul#select-service li a > span,
-body .services li a > span,
-body .service-list li a > span,
-body .service_types li a > span{
+/* Tittel/lenke: hvit tekst, ingen egen bakgrunn */
+#events ul#select-event li > a,
+ul#select-service li > a{
   background: transparent !important;
-  background-image: none !important;
+  color:#fff !important;
+  text-shadow:none !important;
+  border-color: transparent !important;
+  text-decoration:none !important;
 }
 
-/* Pris/“ledige” skal fortsatt være lesbart, men vi rører ikke posisjon */
-#events .price, #events .free_capacity { color:#fff !important; text-shadow:none !important; }
+/* Pris og "ledige" – kun farge (ikke posisjon) */
+#events ul#select-event li .price,
+#events ul#select-event li .free_capacity,
+ul#select-service li .price,
+ul#select-service li .free_capacity{
+  color:#fff !important;
+  text-shadow:none !important;
+  background: transparent !important;
+}
 
+/* ===========================
+   Mobil: litt symmetriske side-gutters (valgfritt)
+   =========================== */
+@media (max-width:640px){
+  #events, .content, #content { padding-left: 1rem !important; padding-right: 1rem !important; }
+  ul#select-event, ul#select-service { padding-left: 0 !important; margin-left: 0 !important; margin-right: 0 !important; }
+}
