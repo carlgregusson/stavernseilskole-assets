@@ -792,3 +792,93 @@ body.c_events_a_index #events ul#select-event li span.free_capacity {
     padding: .15rem .45rem !important;
   }
 }
+
+/* ===== Kurs-/eventliste: LI som grid med rosa bakgrunn ===== */
+
+/* null ut gamle bakgrunner/mønster */
+ul#select-event li a,
+ul#select-service li a {
+  background: none !important;
+  background-image: none !important;
+  text-shadow: none !important;
+}
+
+/* LI = rosa kort med grid */
+ul#select-event li,
+ul#select-service li {
+  display: grid !important;
+  grid-template-columns: 1fr auto auto !important; /* tittel | pris | ledige */
+  align-items: center !important;
+  column-gap: .75rem !important;
+
+  background: var(--brand) !important;
+  border: 0 !important;
+  border-radius: .8rem !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08) !important;
+  padding: .9rem 1rem !important;
+  margin: .75rem 0 !important;
+}
+
+/* Tittel (anker) */
+ul#select-event li > a,
+ul#select-service li > a {
+  grid-column: 1 !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  display: block !important;         /* overstyr table-cell fra tema */
+  text-decoration: none !important;
+  white-space: normal !important;     /* la lang tittel bryte linje */
+}
+
+/* Pris */
+ul#select-event li > .price,
+ul#select-service li > .price {
+  grid-column: 2 !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  background: none !important;
+}
+
+/* Ledige – liten “pill” */
+ul#select-event li > .free_capacity,
+ul#select-service li > .free_capacity {
+  grid-column: 3 !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  background: rgba(255,255,255,.22) !important;
+  border-radius: 9999px !important;
+  padding: .25rem .6rem !important;
+}
+
+/* ===== Mobil: legg pris + ledige på linje 2, høyrejustert ===== */
+@media (max-width: 640px){
+  ul#select-event li,
+  ul#select-service li {
+    grid-template-columns: 1fr auto auto !important;
+    grid-template-rows: auto auto !important;
+    row-gap: .35rem !important;
+  }
+
+  /* tittel fyller rad 1 over hele bredden */
+  ul#select-event li > a,
+  ul#select-service li > a {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+  }
+
+  /* pris og ledige står ved siden av hverandre på rad 2 til høyre */
+  ul#select-event li > .price,
+  ul#select-service li > .price {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    justify-self: end !important;
+  }
+  ul#select-event li > .free_capacity,
+  ul#select-service li > .free_capacity {
+    grid-column: 3 !important;
+    grid-row: 2 !important;
+    justify-self: end !important;
+  }
+}
