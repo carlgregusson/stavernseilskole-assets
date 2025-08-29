@@ -1,50 +1,121 @@
-/* Tilleggsinfo label */
-.optional {
-  font-size: .85em;
-  font-weight: 400;
-  color: #666;
-}
+/* (valgfritt) i label */
+.optional { font-size:.85em; font-weight:400; color:#666; }
+label .optional { color:#6b7280; margin-left:.25rem; }
 
 /* Hjelpetekst under felt */
-.help {
-  font-size: .9em;
-  color: #666;
-  margin-top: .25rem;
-}
+.help { font-size:.9em; color:#666; margin-top:.25rem; }
 
-/* Accordion for vilkår */
+/* Inputs/textarea – litt rundere hjørner */
+input[type="text"], textarea { border-radius:.4rem; }
+
+/* Litt mer luft mellom felter */
+form .field, form p { margin-bottom:.9rem; }
+
+/* Tilleggsinfo-tekstområde – bedre lesbarhet */
+textarea { min-height:7.5rem; line-height:1.45; }
+
+/* Checkbox-rad: justering/spacing */
+input[type="checkbox"] { transform:translateY(1px); margin-right:.4rem; }
+label[for*="terms_accepted"], label[for*="opt_in"], label[for*="bruk_gavekort"] { display:inline-block; }
+
+/* Vilkår-accordion – uten ramme, med pil */
 .terms-accordion {
-  margin-top: .25rem;
-  border: 1px solid #e5e7eb;
-  border-radius: .5rem;
-  background: #fafafa;
-  padding: .25rem .75rem .75rem;
+  margin-top:.5rem;
 }
 
 .terms-accordion > summary {
-  list-style: none;
-  cursor: pointer;
-  font-weight: 600;
-  padding: .5rem 0;
+  list-style:none;
+  cursor:pointer;
+  font-weight:600;
+  padding:.4rem 0;
+  position:relative;
+  padding-left:1.2rem; /* plass til pil */
 }
 
-.terms-accordion > summary::-webkit-details-marker {
-  display: none;
+.terms-accordion > summary::-webkit-details-marker { display:none; }
+
+/* Pil (lukket = ▼, åpen = ▲) */
+.terms-accordion > summary::before {
+  content:"▼";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:.8em;
+  color:#444;
+  transition: transform .2s ease;
+}
+.terms-accordion[open] > summary::before {
+  content:"▲";
 }
 
-.terms-accordion[open] > summary {
-  border-bottom: 1px solid #e5e7eb;
-  margin-bottom: .5rem;
-}
-
+/* Innholdsboks */
 .terms-box {
-  max-height: 16rem;     /* scroll hvis mye tekst */
-  overflow: auto;
-  line-height: 1.5;
-  font-size: .95em;
+  margin-top:.3rem;
+  padding:.25rem 0;
+  line-height:1.55;
+  font-size:.95em;
+}
+.terms-box p { margin:.5rem 0; }
+
+/* Ekstra luft over knappen på mobil */
+@media (max-width:640px){
+  .actions, .buttons { margin-top:1rem; }
 }
 
-/* Små justeringer på input-felt */
-input[type="text"], textarea {
-  border-radius: .4rem;
+/* --- Global farger --- */
+body {
+  background-color:#F9FAFB;  /* lys bakgrunn */
+  color:#111827;             /* mørk tekst */
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Overskrifter */
+h1, h2, h3 {
+  color:#1E40AF;  /* blå */
+  font-weight:600;
+}
+
+/* Knapper */
+button, input[type="submit"], .buttons .next, .actions .next {
+  background-color:#1E40AF;  /* blå */
+  border:none;
+  border-radius:.5rem;
+  color:white !important;
+  font-weight:600;
+  padding:.6rem 1.2rem;
+  transition: background-color .2s ease;
+}
+button:hover, input[type="submit"]:hover, .buttons .next:hover, .actions .next:hover {
+  background-color:#F97316; /* oransje på hover */
+}
+
+/* Avbryt-knappen */
+.buttons .cancel, .actions .cancel {
+  background-color:#E5E7EB;
+  color:#111827 !important;
+  border-radius:.5rem;
+  font-weight:500;
+}
+
+/* Input-felt */
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+  border:1px solid #D1D5DB;
+  border-radius:.5rem;
+  padding:.5rem;
+  font-size:1rem;
+}
+input:focus, textarea:focus {
+  outline:none;
+  border-color:#1E40AF;
+  box-shadow:0 0 0 2px rgba(30,64,175,.2);
+}
+
+/* Lenker */
+a { color:#1E40AF; font-weight:500; }
+a:hover { color:#F97316; }
+
+/* Checkbox og label */
+input[type="checkbox"] {
+  accent-color:#1E40AF; /* moderne nettlesere */
 }
