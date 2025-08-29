@@ -176,3 +176,50 @@ a.button.primary:active, .button.primary:active, button:active, input[type="subm
   min-height: 46px !important;
   padding: 0 .9rem !important;
 }
+
+/* === Kursliste-knapper på MakePlans-forsiden === */
+/* Fjern den grønne/teksturerte bakgrunnen på LI (noen temaer legger den her) */
+.services li,
+.service-list li,
+.service_types li {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Selve knappene (anker-tagene) */
+.services li a,
+.service-list li a,
+.service_types li a,
+.services .service a,
+.service a {
+  display: block !important;
+  background: var(--brand) !important;      /* rosa brandfarge */
+  background-image: none !important;
+  color: #fff !important;                    /* hvit tekst */
+  text-shadow: none !important;
+  border: none !important;
+  border-radius: .8rem !important;
+  padding: 1rem 1.25rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08) !important;
+  transition: background-color .2s ease, transform .02s ease !important;
+}
+
+/* Hover/aktiv tilstand */
+.services li a:hover,
+.service-list li a:hover,
+.service_types li a:hover,
+.services .service a:hover,
+.service a:hover {
+  background: var(--brand-hover) !important;
+  transform: translateY(-1px);
+}
+
+/* Liten justering av spacing rundt listen (valgfritt) */
+.services,
+.service-list,
+.service_types {
+  margin-top: 1rem !important;
+}
