@@ -472,3 +472,88 @@ ul#select-service li .free_capacity { right: 1rem !important; }
   ul#select-event li, ul#select-service li { margin: .75rem 0 !important; }
 
 }
+
+/* === Event-liste som grid: [kursnavn] [pris] [ledig] === */
+ul#select-event li,
+ul#select-service li{
+  display: grid !important;
+  grid-template-columns: 1fr auto auto !important;
+  align-items: center !important;
+  column-gap: .75rem !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: .75rem 0 !important;
+}
+
+/* Selve “knappen” (anker) */
+ul#select-event li a,
+ul#select-service li a{
+  display: block !important;
+  width: 100% !important;
+  min-height: 56px !important;
+  background: var(--brand) !important;
+  background-image: none !important;
+  color: #fff !important;
+  text-shadow: none !important;
+  border: 0 !important;
+  border-radius: .8rem !important;
+  padding: 1rem 1.25rem !important;
+  font-weight: 700 !important;
+  /* VIKTIG: la teksten få bryte linje, ikke tving én linje */
+  white-space: normal !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08) !important;
+}
+
+/* Nuller ut tidligere absolute-posisjonering vi brukte */
+ul#select-event li .price,
+ul#select-event li .free_capacity,
+ul#select-service li .price,
+ul#select-service li .free_capacity{
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  transform: none !important;
+  float: none !important;
+  text-shadow: none !important;
+  color: #fff !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  justify-self: end;   /* skyv til høyre kolonne */
+}
+
+/* chip for “ledig” */
+ul#select-event li .free_capacity,
+ul#select-service li .free_capacity{
+  background: rgba(255,255,255,.22) !important;
+  border-radius: 9999px !important;
+  padding: .25rem .6rem !important;
+}
+
+/* pris uten bakgrunn */
+ul#select-event li .price,
+ul#select-service li .price{
+  background: none !important;
+  margin-right: .25rem !important;
+}
+
+/* Mobil: legg pris + ledig på ny linje under knappen, høyrejustert */
+@media (max-width: 520px){
+  ul#select-event li,
+  ul#select-service li{
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto !important;
+    row-gap: .35rem !important;
+  }
+  ul#select-event li .price,
+  ul#select-event li .free_capacity,
+  ul#select-service li .price,
+  ul#select-service li .free_capacity{
+    justify-self: end !important;
+  }
+  ul#select-event li .price,
+  ul#select-service li .price{ font-size: .95em !important; }
+  ul#select-event li .free_capacity,
+  ul#select-service li .free_capacity{ font-size: .9em !important; }
+}
