@@ -1,216 +1,51 @@
 /* ===========================
-   Stavern Seilskole – MakePlans Theme (clean)
+   Stavern Seilskole – MakePlans Skin (minimal)
+   Overstyrer KUN farger + header. Layout lar vi temaet styre.
    =========================== */
 
-/* Fonter */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
-
-/* Brand-variabler */
+/* Brand */
 :root{
-  --bg:#F7F7F9;
-  --text:#0E0F12;
-  --muted:#6B7280;
-
-  --brand:#E06AA3;        /* primær rosa */
-  --brand-hover:#C7538E;  /* hover rosa */
-
-  --outline:#111827;
-  --line:#E5E7EB;
-  --field:#D1D5DB;
+  --brand:#E06AA3;        /* rosa */
+  --brand-hover:#C7538E;  /* mørkere rosa */
+  --header:#0B0B0B;       /* sort */
 }
 
-/* Grunnstil */
-html,body{background:var(--bg);color:var(--text);font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-h1,h2,h3{color:var(--text);font-family:"Poppins","Inter",Arial,sans-serif;font-weight:700;}
-a{color:var(--brand);font-weight:600;text-decoration:none;}
-a:hover{color:var(--brand-hover);text-decoration:underline;}
-form .field,form p{margin-bottom:.9rem;}
-
-/* Inputs */
-input[type="text"],input[type="email"],input[type="tel"],textarea{
-  border:1px solid var(--field);border-radius:.6rem;padding:.6rem .7rem;font-size:1rem;background:#fff;
+/* Header helt sort */
+#header, header, .header, .booking-header, .topbar, .navbar, .masthead {
+  background: var(--header) !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
-input:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 2px color-mix(in srgb, var(--brand) 20%, transparent);}
-textarea{min-height:7.5rem;line-height:1.45;}
-input[type="checkbox"]{accent-color:var(--brand);transform:translateY(1px);margin-right:.45rem;}
-label[for*="terms_accepted"],label[for*="opt_in"],label[for*="bruk_gavekort"]{display:inline-block;}
-.optional{font-size:.85em;font-weight:400;color:var(--muted);} label .optional{margin-left:.25rem;}
-.help{font-size:.9em;color:var(--muted);margin-top:.25rem;}
-@media (max-width:640px){.actions,.buttons{margin-top:1rem;}}
-
-/* Accordion (vilkår) – uten ramme, med pil */
-.terms-accordion{margin-top:.6rem;}
-.terms-accordion>summary{list-style:none;cursor:pointer;font-weight:700;padding:.45rem 0;position:relative;padding-left:1.2rem;color:var(--text);}
-.terms-accordion>summary::-webkit-details-marker{display:none;}
-.terms-accordion>summary::before{content:"▼";position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:.82em;color:var(--muted);}
-.terms-accordion[open]>summary::before{content:"▲";}
-.terms-box{margin-top:.3rem;padding:.25rem 0;line-height:1.55;font-size:.95em;color:var(--text);}
-.terms-box p{margin:.5rem 0;}
-
-/* Header – helt sort */
-#header,header,.header,.branding,#branding,.brandbar,.topbar,.navbar,.masthead,.site-header,.booking-header,
-#header .inner,.header .inner,#branding .inner,.branding .inner{
-  background:#0B0B0B !important;background-image:none !important;border:none !important;border-radius:0 !important;box-shadow:none !important;
+#header a, .header a, .topbar a, .navbar a, .masthead a{
+  color:#F3F4F6 !important; text-decoration:none !important; font-weight:600 !important;
 }
-#header a,.header a,.branding a,#branding a,.topbar a,.navbar a,.masthead a,.site-header a{color:#F3F4F6 !important;text-decoration:none !important;font-weight:600 !important;}
-#header a:hover,.header a:hover,.branding a:hover,#branding a:hover,.topbar a:hover,.navbar a:hover,.masthead a:hover,.site-header a:hover{color:var(--brand) !important;}
-
-/* Knapper */
-a.next,.next.button,.buttons .next,.actions .next,a.button.primary,.button.primary,button.primary,button,input[type="submit"]{
-  display:inline-flex !important;align-items:center !important;justify-content:center !important;
-  background:var(--brand) !important;background-image:none !important;box-shadow:none !important;text-shadow:none !important;
-  color:#fff !important;border:none !important;border-radius:.6rem !important;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif !important;font-weight:700 !important;line-height:1 !important;
-  min-height:46px !important;padding:0 1.1rem !important;transition:background-color .2s ease, transform .02s ease !important;
-}
-a.next:hover,.next.button:hover,.buttons .next:hover,.actions .next:hover,a.button.primary:hover,.button.primary:hover,button.primary:hover,button:hover,input[type="submit"]:hover{background:var(--brand-hover) !important;}
-.buttons .cancel,.actions .cancel,.button.secondary{
-  display:inline-flex !important;align-items:center !important;justify-content:center !important;background:#fff !important;background-image:none !important;box-shadow:none !important;text-shadow:none !important;
-  color:#111827 !important;border:1px solid #111827 !important;border-radius:.6rem !important;font-weight:600 !important;min-height:46px !important;padding:0 .9rem !important;
+#header a:hover, .header a:hover, .topbar a:hover, .navbar a:hover, .masthead a:hover{
+  color:var(--brand) !important;
 }
 
-/* ===========================
-   Kurs-/tjenestelister
-   =========================== */
-
-/* A) Topp-oversikt over tjenester (noen temaer bruker .services/.service_types) */
-.services li,.service-list li,.service_types li{background:transparent !important;background-image:none !important;border:none !important;box-shadow:none !important;padding:0 !important;}
-.services li a,.service-list li a,.service_types li a,.services .service a,.service a{
-  display:block !important;background:var(--brand) !important;color:#fff !important;text-shadow:none !important;border:none !important;border-radius:.8rem !important;
-  padding:1rem 1.25rem !important;font-weight:700 !important;box-shadow:0 2px 6px rgba(0,0,0,.08) !important;transition:background-color .2s ease, transform .02s ease !important;
+/* ——— Tjeneste-oversikt (liste med kurskategorier) ——— */
+.services li, .service-list li, .service_types li{
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
 }
-.services li a:hover,.service-list li a:hover,.service_types li a:hover,.services .service a:hover,.service a:hover{background:var(--brand-hover) !important;transform:translateY(-1px);}
-.services,.service-list,.service_types{margin-top:1rem !important;}
-
-/* B) Eventliste for én tjeneste – robust GRID (ingen overlapp) */
-/* Null ut grønn tekstur på <a> som enkelte tema legger der */
-ul#select-event li a,ul#select-service li a{background:none !important;background-image:none !important;text-shadow:none !important;display:block !important;}
-
-/* LI er “kortet” med rosa bakgrunn og grid: [tittel][pris][ledig]  */
-ul#select-event li,ul#select-service li{
-  display:grid !important;grid-template-columns:1fr auto auto !important;align-items:center !important;column-gap:.75rem !important;
-  background:var(--brand) !important;border:0 !important;border-radius:.8rem !important;box-shadow:0 2px 6px rgba(0,0,0,.08) !important;
-  padding:.9rem 1rem !important;margin:.75rem 0 !important;
+.services li a, .service-list li a, .service_types li a{
+  background-color: var(--brand) !important;
+  background-image: none !important;
+  color:#fff !important;
+  text-shadow:none !important;
+  border-color: transparent !important;
+}
+.services li a:hover, .service-list li a:hover, .service_types li a:hover{
+  background-color: var(--brand-hover) !important;
 }
 
-/* Tittel (anker) */
-ul#select-event li>a,ul#select-service li>a{grid-column:1 !important;color:#fff !important;font-weight:700 !important;text-decoration:none !important;white-space:normal !important;}
-
-/* Pris og ledige */
-ul#select-event li>.price,ul#select-service li>.price{grid-column:2 !important;color:#fff !important;font-weight:700 !important;line-height:1 !important;background:none !important;}
-ul#select-event li>.free_capacity,ul#select-service li>.free_capacity{
-  grid-column:3 !important;color:#fff !important;font-weight:700 !important;line-height:1 !important;background:rgba(255,255,255,.22) !important;border-radius:9999px !important;padding:.25rem .6rem !important;
+/* ——— Event-lister (datoer for valgt kurs) ——— */
+/* Nøytraliser grønn tekstur – la layout være i fred */
+ul#select-event li, ul#select-service li{
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
 }
-
-/* Mobil: legg pris + ledige på rad 2 til høyre, tittel fyller rad 1 */
-@media (max-width:640px){
-  ul#select-event li,ul#select-service li{grid-template-columns:1fr auto auto !important;grid-template-rows:auto auto !important;row-gap:.35rem !important;}
-  ul#select-event li>a,ul#select-service li>a{grid-column:1 / -1 !important;grid-row:1 !important;}
-  ul#select-event li>.price,ul#select-service li>.price{grid-column:2 !important;grid-row:2 !important;justify-self:end !important;color:#111827 !important;}
-  ul#select-event li>.free_capacity,ul#select-service li>.free_capacity{
-    grid-column:3 !important;grid-row:2 !important;justify-self:end !important;color:#111827 !important;background:#F3E1EA !important;border-radius:.6rem !important;padding:.15rem .45rem !important;
-  }
-}
-
-/* --- Mobil: sørg for pene side-gutters og ingen overflow --- */
-@media (max-width:640px){
-  /* kortene (LI) – definer bredde, gutter og mer luft inni */
-  .services li,
-  .service-list li,
-  .service_types li,
-  ul#select-event li,
-  ul#select-service li{
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: .75rem 1rem !important;                 /* 1rem side-gutter */
-    padding: 1rem 1rem 1.15rem 1rem !important;     /* litt ekstra bunnpadding */
-  }
-
-  /* selve klikkflaten – aldri stikke utenfor */
-  .services li a,
-  .service-list li a,
-  .service_types li a,
-  ul#select-event li > a,
-  ul#select-service li > a{
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    text-decoration: none !important;               /* ingen strek under */
-    line-height: 1.25 !important;
-  }
-
-  /* pris + ledige på linjen under – høyrejustert (fra før), men litt luft */
-  ul#select-event li, ul#select-service li{ text-align:right !important; }
-  ul#select-event li > .price, ul#select-service li > .price{ margin-right:.6rem !important; color:#111827 !important; }
-  ul#select-event li > .free_capacity, ul#select-service li > .free_capacity{
-    color:#111827 !important; background:#F3E1EA !important; border-radius:.6rem !important; padding:.18rem .5rem !important;
-  }
-}
-
-/* Sikkerhetsnett: aldri horisontal scroll pga. “uheldige” bredder */
-html, body { overflow-x: hidden; }
-
-/* === MOBIL: like gutters på begge sider + ryddig liste === */
-@media (max-width:640px){
-  /* Fjern standard venstre-innrykk på ul og gi like gutters */
-  #events, .content, #content { padding-left: 1rem !important; padding-right: 1rem !important; }
-  ul#select-event, ul#select-service {
-    list-style: none !important;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  /* Kortene: aldri stikk utenfor + litt ekstra luft */
-  ul#select-event li,
-  ul#select-service li{
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: .75rem 0 !important;               /* gutters styres av containeren over */
-    padding: 1rem 1rem 1.2rem 1rem !important;  /* ekstra bunn-padding */
-    align-items: start !important;              /* grid: start på rad 1 */
-    row-gap: .6rem !important;                  /* luft mellom tittel og prislinje */
-    overflow: visible !important;               /* ikke klipp innhold */
-  }
-
-  /* Selve tittel-ankeret: la høyden følge innholdet */
-  ul#select-event li > a,
-  ul#select-service li > a{
-    display: block !important;                  /* overstyr table-cell */
-    min-height: 0 !important;                   /* fjern eventuell min-høyde */
-    line-height: 1.25 !important;
-    background: transparent !important;         /* bakgrunn ligger på LI */
-    text-decoration: none !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    white-space: normal !important;             /* tillat linjebrekk */
-    overflow: visible !important;
-  }
-
-  /* Pris + "ledige" på linjen under – høyrejustert og med litt luft */
-  ul#select-event li > .price,
-  ul#select-service li > .price,
-  ul#select-event li > .free_capacity,
-  ul#select-service li > .free_capacity{
-    position: static !important;
-    transform: none !important;
-    display: inline-block !important;
-    color: #111827 !important;
-    text-shadow: none !important;
-    font-weight: 700 !important;
-    margin-top: .1rem !important;
-  }
-  ul#select-event li > .price,
-  ul#select-service li > .price{ margin-right: .6rem !important; }
-  ul#select-event li > .free_capacity,
-  ul#select-service li > .free_capacity{
-    background: #F3E1EA !important;
-    border-radius: .6rem !important;
-    padding: .18rem .5rem !important;
-  }
-}
-
-/* Sikkerhetsnett: aldri horisontal scroll */
-html, body { overflow-x: hidden; }
+ul#se
