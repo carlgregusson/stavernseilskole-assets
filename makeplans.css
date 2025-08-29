@@ -414,3 +414,61 @@ ul#select-service li a span {
   background-image: none !important;
   color: inherit !important;
 }
+
+/* === Event-liste: pris + ledige til høyre, alltid på én linje === */
+ul#select-event li { position: relative !important; }
+
+/* selve knappen får plass til pris + ledige */
+ul#select-event li a {
+  padding-right: 12rem !important; /* øk/lav denne ved behov */
+  white-space: nowrap !important;   /* unngå linjebrekk i anker-teksten */
+}
+
+/* pris */
+ul#select-event li .price {
+  position: absolute !important;
+  right: 8rem !important;           /* avstand fra høyre kant */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  float: none !important;
+  background: none !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  line-height: 1 !important;
+}
+
+/* ledige (chip/pill) */
+ul#select-event li .free_capacity {
+  position: absolute !important;
+  right: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  float: none !important;
+  color: #fff !important;
+  background: rgba(255,255,255,.22) !important; /* liten lys chip */
+  border-radius: 9999px !important;
+  padding: .25rem .6rem !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  line-height: 1 !important;
+}
+
+/* samme regler om det finnes en #select-service-liste også */
+ul#select-service li { position: relative !important; }
+ul#select-service li a { padding-right: 12rem !important; }
+ul#select-service li .price { right: 8rem !important; }
+ul#select-service li .free_capacity { right: 1rem !important; }
+
+/* litt tightere på mobil */
+@media (max-width: 520px){
+  ul#select-event li a,
+  ul#select-service li a { padding-right: 9rem !important; }
+  ul#select-event li .price,
+  ul#select-service li .price { right: 6.2rem !important; font-size: .95em !important; }
+  ul#select-event li .free_capacity,
+  ul#select-service li .free_capacity { font-size: .9em !important; }
+  ul#select-event li a, ul#select-service li a { box-shadow: none !important; }
+  ul#select-event li, ul#select-service li { margin: .75rem 0 !important; }
+
+}
