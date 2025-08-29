@@ -557,3 +557,93 @@ ul#select-service li .price{
   ul#select-event li .free_capacity,
   ul#select-service li .free_capacity{ font-size: .9em !important; }
 }
+
+/* ---- sørg for at våre regler vinner over tidligere grid-test ---- */
+ul#select-event li,
+ul#select-service li { display:block !important; }
+
+/* ===== DESKTOP (≥ 601px): knapp + pris + ledig på én linje ===== */
+@media (min-width:601px){
+  /* li som “posisjonscontainer” */
+  ul#select-event li,
+  ul#select-service li { position: relative !important; }
+
+  /* gi plass til pris/ledig til høyre */
+  ul#select-event li a,
+  ul#select-service li a {
+    padding-right: 12.5rem !important;   /* juster ved behov */
+    white-space: normal !important;      /* tillat linjebrekk i kursnavn */
+  }
+
+  /* pris – høyre, midtstilt vertikalt */
+  ul#select-event li .price,
+  ul#select-service li .price{
+    position: absolute !important;
+    right: 8rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    float: none !important;
+    background: none !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    z-index: 1 !important;
+  }
+
+  /* ledige – liten “pill” helt til høyre */
+  ul#select-event li .free_capacity,
+  ul#select-service li .free_capacity{
+    position: absolute !important;
+    right: 1rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    float: none !important;
+    color: #fff !important;
+    background: rgba(255,255,255,.22) !important;
+    border-radius: 9999px !important;
+    padding: .25rem .6rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    z-index: 1 !important;
+  }
+}
+
+/* ===== MOBIL (≤ 600px): pris + ledig under knappen, høyrejustert ===== */
+@media (max-width:600px){
+  /* normal knapp uten ekstra høyre-padding */
+  ul#select-event li a,
+  ul#select-service li a{
+    padding-right: 1.25rem !important;
+    margin-bottom: .25rem !important;
+  }
+
+  /* legg pris/ledig under knappen */
+  ul#select-event li .price,
+  ul#select-service li .price,
+  ul#select-event li .free_capacity,
+  ul#select-service li .free_capacity{
+    position: static !important;
+    transform: none !important;
+    display: inline-block !important;
+    margin-top: .35rem !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+  }
+
+  /* farger som funker på lys bakgrunn */
+  ul#select-event li .price,
+  ul#select-service li .price{ color:#111827 !important; margin-right:.5rem !important; }
+  ul#select-event li .free_capacity,
+  ul#select-service li .free_capacity{
+    color:#111827 !important;
+    background:#F3E1EA !important;         /* lys rosa pill */
+    border-radius:.6rem !important;
+    padding:.15rem .45rem !important;
+  }
+
+  /* høyrejustér linjen under knappen */
+  ul#select-event li,
+  ul#select-service li{ text-align:right !important; }
+}
