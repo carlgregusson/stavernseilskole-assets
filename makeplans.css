@@ -149,3 +149,68 @@ ul#select-event li>.free_capacity,ul#select-service li>.free_capacity{
 
 /* Sikkerhetsnett: aldri horisontal scroll pga. “uheldige” bredder */
 html, body { overflow-x: hidden; }
+
+/* === MOBIL: like gutters på begge sider + ryddig liste === */
+@media (max-width:640px){
+  /* Fjern standard venstre-innrykk på ul og gi like gutters */
+  #events, .content, #content { padding-left: 1rem !important; padding-right: 1rem !important; }
+  ul#select-event, ul#select-service {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Kortene: aldri stikk utenfor + litt ekstra luft */
+  ul#select-event li,
+  ul#select-service li{
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: .75rem 0 !important;               /* gutters styres av containeren over */
+    padding: 1rem 1rem 1.2rem 1rem !important;  /* ekstra bunn-padding */
+    align-items: start !important;              /* grid: start på rad 1 */
+    row-gap: .6rem !important;                  /* luft mellom tittel og prislinje */
+    overflow: visible !important;               /* ikke klipp innhold */
+  }
+
+  /* Selve tittel-ankeret: la høyden følge innholdet */
+  ul#select-event li > a,
+  ul#select-service li > a{
+    display: block !important;                  /* overstyr table-cell */
+    min-height: 0 !important;                   /* fjern eventuell min-høyde */
+    line-height: 1.25 !important;
+    background: transparent !important;         /* bakgrunn ligger på LI */
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;             /* tillat linjebrekk */
+    overflow: visible !important;
+  }
+
+  /* Pris + "ledige" på linjen under – høyrejustert og med litt luft */
+  ul#select-event li > .price,
+  ul#select-service li > .price,
+  ul#select-event li > .free_capacity,
+  ul#select-service li > .free_capacity{
+    position: static !important;
+    transform: none !important;
+    display: inline-block !important;
+    color: #111827 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+    margin-top: .1rem !important;
+  }
+  ul#select-event li > .price,
+  ul#select-service li > .price{ margin-right: .6rem !important; }
+  ul#select-event li > .free_capacity,
+  ul#select-service li > .free_capacity{
+    background: #F3E1EA !important;
+    border-radius: .6rem !important;
+    padding: .18rem .5rem !important;
+  }
+}
+
+/* Sikkerhetsnett: aldri horisontal scroll */
+html, body { overflow-x: hidden; }
