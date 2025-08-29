@@ -223,3 +223,65 @@ a.button.primary:active, .button.primary:active, button:active, input[type="subm
 .service_types {
   margin-top: 1rem !important;
 }
+
+/* === Service-/kursliste: fjern grønn tekstur og lag rosa knapper === */
+
+/* 1) Nøytraliser LI-bakgrunn (noen temaer legger teksturen her) */
+#content ul.services li,
+ul.services li,
+ul.service_types li,
+.service_types li,
+.services .service,
+.service-list li,
+.categories li {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* 2) Selve klikkflaten: <a> eller <button> */
+#content ul.services li a,
+ul.services li a,
+ul.service_types li a,
+.service_types li a,
+.services li a,
+.service-list li a,
+.categories li a,
+.services li button,
+.service_types li button {
+  display: block !important;
+  background: var(--brand) !important;           /* rosa */
+  background-image: none !important;
+  color: #fff !important;                         /* hvit tekst */
+  text-shadow: none !important;
+  border: none !important;
+  border-radius: .8rem !important;
+  padding: 1rem 1.25rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08) !important;
+  transition: background-color .2s ease, transform .02s ease !important;
+}
+
+/* 3) Hover */
+#content ul.services li a:hover,
+ul.services li a:hover,
+ul.service_types li a:hover,
+.service_types li a:hover,
+.services li a:hover,
+.service-list li a:hover,
+.categories li a:hover,
+.services li button:hover,
+.service_types li button:hover {
+  background: var(--brand-hover) !important;
+  transform: translateY(-1px);
+}
+
+/* 4) Hvis temaet legger bakgrunn på indre <span> – null den også */
+ul.services li a span,
+ul.service_types li a span {
+  background: transparent !important;
+  background-image: none !important;
+}
+
